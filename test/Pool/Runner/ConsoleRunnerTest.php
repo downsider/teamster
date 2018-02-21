@@ -1,12 +1,12 @@
 <?php
 
-namespace Silktide\Teamster\Test\Pool\Runner;
+namespace Lexide\Teamster\Test\Pool\Runner;
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
-use Silktide\Teamster\Exception\RunnerException;
-use Silktide\Teamster\Pool\Runner\ConsoleRunner;
+use Lexide\Teamster\Exception\RunnerException;
+use Lexide\Teamster\Pool\Runner\ConsoleRunner;
 
 /**
  *
@@ -29,10 +29,10 @@ class ConsoleRunnerTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->pidFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
-        $this->pid = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
+        $this->pidFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
+        $this->pid = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
         $this->pidFactory->shouldReceive("create")->andReturn($this->pid);
-        $this->pid->shouldReceive("getPid")->withArgs([true])->andThrow("Silktide\\Teamster\\Exception\\PidException");
+        $this->pid->shouldReceive("getPid")->withArgs([true])->andThrow("Lexide\\Teamster\\Exception\\PidException");
 
         $this->defaultDescriptorSpec = [
             0 => ["pipe", "r"],
@@ -108,4 +108,3 @@ class ConsoleRunnerTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

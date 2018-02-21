@@ -1,12 +1,12 @@
 <?php
 
-namespace Silktide\Teamster\Test\Command;
+namespace Lexide\Teamster\Test\Command;
 
-use Silktide\Teamster\Command\PoolCommand;
-use Silktide\Teamster\Pool\Runner\RunnerFactory;
-use Silktide\Teamster\Pool\Runner\RunnerInterface;
-use Silktide\Teamster\Pool\Pid\PidFactoryInterface;
-use Silktide\Teamster\Pool\Pid\PidInterface;
+use Lexide\Teamster\Command\PoolCommand;
+use Lexide\Teamster\Pool\Runner\RunnerFactory;
+use Lexide\Teamster\Pool\Runner\RunnerInterface;
+use Lexide\Teamster\Pool\Pid\PidFactoryInterface;
+use Lexide\Teamster\Pool\Pid\PidInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputDefinition;
@@ -59,18 +59,18 @@ class PoolCommandTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->runner = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerInterface")->shouldIgnoreMissing();
+        $this->runner = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerInterface")->shouldIgnoreMissing();
         $this->runner->shouldReceive("isRunning")->andReturn(true);
 
-        $this->completedRunner = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerInterface")->shouldIgnoreMissing();
+        $this->completedRunner = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerInterface")->shouldIgnoreMissing();
         $this->completedRunner->shouldReceive("isRunning")->andReturn(false);
 
-        $this->runnerFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerFactory");
+        $this->runnerFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerFactory");
         $this->runnerFactory->shouldReceive("createRunner")->withArgs(["console", "/^(?!completed-).*/", \Mockery::type("int")])->andReturn($this->runner);
         $this->runnerFactory->shouldReceive("createRunner")->withArgs(["console", "/^completed-/", \Mockery::type("int")])->andReturn($this->completedRunner);
 
-        $this->pid = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
-        $this->pidFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
+        $this->pid = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
+        $this->pidFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
         $this->pidFactory->shouldReceive("create")->andReturn($this->pid);
 
         $this->inputDefinition = \Mockery::mock("Symfony\\Component\\Console\\Input\\InputDefinition");
@@ -340,4 +340,3 @@ class PoolCommandTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

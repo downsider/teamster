@@ -1,9 +1,9 @@
 {
   "parameters": {
-    "pool.commandName": "silktide:teamster:pool",
+    "pool.commandName": "lexide:teamster:pool",
     "pool.serviceConfig": [],
     "pool.pidFile": "",
-    "thread.commandName": "silktide:teamster:thread",
+    "thread.commandName": "lexide:teamster:thread",
     "pid.directory": "app/pid",
     "consolePath": "",
     "canRunAsRoot": false
@@ -11,14 +11,14 @@
 
   "services": {
     "pid.factory": {
-      "class": "Silktide\\Teamster\\Pool\\Pid\\PidFactory",
+      "class": "Lexide\\Teamster\\Pool\\Pid\\PidFactory",
       "arguments": [
         "%pid.directory%"
       ]
     },
 
     "runner.factory": {
-      "class": "Silktide\\Teamster\\Pool\\Runner\\RunnerFactory",
+      "class": "Lexide\\Teamster\\Pool\\Runner\\RunnerFactory",
       "arguments": [
         "@pid.factory",
         "%consolePath%"
@@ -26,7 +26,7 @@
     },
 
     "poolControl.command": {
-      "class": "Silktide\\Teamster\\Command\\PoolControlCommand",
+      "class": "Lexide\\Teamster\\Command\\PoolControlCommand",
       "arguments": [
         "@runner.factory",
         "@pid.factory",
@@ -40,7 +40,7 @@
     },
 
     "pool.command": {
-      "class": "Silktide\\Teamster\\Command\\PoolCommand",
+      "class": "Lexide\\Teamster\\Command\\PoolCommand",
       "arguments": [
         "%pool.commandName%",
         "%thread.commandName%",
@@ -55,7 +55,7 @@
     },
 
     "thread.command": {
-      "class": "Silktide\\Teamster\\Command\\ThreadCommand",
+      "class": "Lexide\\Teamster\\Command\\ThreadCommand",
       "arguments": [
         "%thread.commandName%",
         "@runner.factory"

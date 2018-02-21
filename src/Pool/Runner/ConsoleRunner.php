@@ -1,9 +1,9 @@
 <?php
 
-namespace Silktide\Teamster\Pool\Runner;
+namespace Lexide\Teamster\Pool\Runner;
 
-use Silktide\Teamster\Exception\RunnerException;
-use Silktide\Teamster\Pool\Pid\PidFactoryInterface;
+use Lexide\Teamster\Exception\RunnerException;
+use Lexide\Teamster\Pool\Pid\PidFactoryInterface;
 
 /**
  * Runs a console command in a separate process

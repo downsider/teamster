@@ -1,8 +1,8 @@
 <?php
 
-namespace Silktide\Teamster\Pool\Pid;
+namespace Lexide\Teamster\Pool\Pid;
 
-use Silktide\Teamster\Exception\NotFoundException;
+use Lexide\Teamster\Exception\NotFoundException;
 
 /**
  * Factory class for Pid objects

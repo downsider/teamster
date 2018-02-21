@@ -1,13 +1,13 @@
 <?php
 
-namespace Silktide\Teamster\Test\Pool\Pid;
+namespace Lexide\Teamster\Test\Pool\Pid;
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
 use org\bovigo\vfs\vfsStreamFile;
-use Silktide\Teamster\Exception\PidException;
-use Silktide\Teamster\Pool\Pid\Pid;
+use Lexide\Teamster\Exception\PidException;
+use Lexide\Teamster\Pool\Pid\Pid;
 
 /**
  *

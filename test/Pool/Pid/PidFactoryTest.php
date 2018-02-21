@@ -1,13 +1,13 @@
 <?php
 
-namespace Silktide\Teamster\Test\Pool\Pid;
+namespace Lexide\Teamster\Test\Pool\Pid;
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
-use Silktide\Teamster\Exception\NotFoundException;
-use Silktide\Teamster\Exception\PidException;
-use Silktide\Teamster\Pool\Pid\PidFactory;
+use Lexide\Teamster\Exception\NotFoundException;
+use Lexide\Teamster\Exception\PidException;
+use Lexide\Teamster\Pool\Pid\PidFactory;
 
 /**
  *
@@ -99,4 +99,3 @@ class PidFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

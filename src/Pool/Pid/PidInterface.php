@@ -1,6 +1,6 @@
 <?php
 
-namespace Silktide\Teamster\Pool\Pid;
+namespace Lexide\Teamster\Pool\Pid;
 
 /**
  *

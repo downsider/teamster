@@ -1,9 +1,9 @@
 <?php
 
-namespace Silktide\Teamster\Test\Pool\Runner;
+namespace Lexide\Teamster\Test\Pool\Runner;
 
-use Silktide\Teamster\Pool\Runner\ProcessRunner;
-use Silktide\Teamster\Pool\Pid\PidInterface;
+use Lexide\Teamster\Pool\Runner\ProcessRunner;
+use Lexide\Teamster\Pool\Pid\PidInterface;
 
 /**
  *
@@ -24,8 +24,8 @@ class ProcessRunnerTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->pidFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
-        $this->pid = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
+        $this->pidFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
+        $this->pid = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
         $this->pidFactory->shouldReceive("create")->andReturn($this->pid);
 
         $this->defaultDescriptorSpec = [
@@ -109,7 +109,7 @@ class ProcessRunnerTest extends \PHPUnit_Framework_TestCase
         $outFile = __DIR__ . "/output/output";
         $spec = $this->setupOutFile($outFile);
 
-        $this->pid->shouldReceive("getPid")->withArgs([true])->andThrow("Silktide\\Teamster\\Exception\\PidException");
+        $this->pid->shouldReceive("getPid")->withArgs([true])->andThrow("Lexide\\Teamster\\Exception\\PidException");
         $this->pid->shouldReceive("cleanPid")->once()->andReturn(true);
 
         $runner = new ProcessRunner($this->pidFactory, $spec, "dud", 1, 5, 5);
@@ -130,7 +130,7 @@ class ProcessRunnerTest extends \PHPUnit_Framework_TestCase
      */
     public function testNonBlocking($timeout, $wait, $finish, $output, $expectedOutput)
     {
-        $this->pid->shouldReceive("getPid")->withArgs([true])->andThrow("Silktide\\Teamster\\Exception\\PidException");
+        $this->pid->shouldReceive("getPid")->withArgs([true])->andThrow("Lexide\\Teamster\\Exception\\PidException");
         $this->pid->shouldReceive("cleanPid")->once()->andReturn(true);
 
         // seems we need to use a real file and can't mock the filesystem
@@ -159,7 +159,7 @@ class ProcessRunnerTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [ // naturally ending process
-                200000,
+                2000000,
                 true,   // wait for it to end
                 false,  // don't try to finish
                 "output",
@@ -173,7 +173,7 @@ class ProcessRunnerTest extends \PHPUnit_Framework_TestCase
                 ""      // expect no output
             ],
             [ // clean up process
-                200000,
+                2000000,
                 true,   // wait
                 true,   // and call finish
                 "output",
@@ -183,4 +183,3 @@ class ProcessRunnerTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

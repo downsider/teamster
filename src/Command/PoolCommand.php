@@ -1,14 +1,14 @@
 <?php
 
-namespace Silktide\Teamster\Command;
+namespace Lexide\Teamster\Command;
 
-use Silktide\Teamster\Pool\Pid\PidFactoryInterface;
-use Silktide\Teamster\Pool\Runner\RunnerFactory;
+use Lexide\Teamster\Pool\Pid\PidFactoryInterface;
+use Lexide\Teamster\Pool\Runner\RunnerFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Silktide\Teamster\Pool\Runner\RunnerInterface;
+use Lexide\Teamster\Pool\Runner\RunnerInterface;
 
 /**
  *

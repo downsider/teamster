@@ -1,6 +1,6 @@
 <?php
 
-namespace Silktide\Teamster\Exception;
+namespace Lexide\Teamster\Exception;
 
 /**
  *

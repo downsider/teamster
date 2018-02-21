@@ -1,17 +1,17 @@
 <?php
 
-namespace Silktide\Teamster\Test\Command;
+namespace Lexide\Teamster\Test\Command;
 
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper;
-use Silktide\Teamster\Command\PoolControlCommand;
-use Silktide\Teamster\Exception\ProcessException;
+use Lexide\Teamster\Command\PoolControlCommand;
+use Lexide\Teamster\Exception\ProcessException;
 use Symfony\Component\Console\Input\InputDefinition;
-use Silktide\Teamster\Pool\Runner\RunnerInterface;
-use Silktide\Teamster\Pool\Runner\RunnerFactory;
-use Silktide\Teamster\Pool\Pid\PidFactoryInterface;
-use Silktide\Teamster\Pool\Pid\PidInterface;
+use Lexide\Teamster\Pool\Runner\RunnerInterface;
+use Lexide\Teamster\Pool\Runner\RunnerFactory;
+use Lexide\Teamster\Pool\Pid\PidFactoryInterface;
+use Lexide\Teamster\Pool\Pid\PidInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -60,12 +60,12 @@ class PoolControlCommandTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->runner = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerInterface");
-        $this->runnerFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerFactory");
+        $this->runner = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerInterface");
+        $this->runnerFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerFactory");
         $this->runnerFactory->shouldReceive("createRunner")->andReturn($this->runner);
 
-        $this->pid = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
-        $this->pidFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
+        $this->pid = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
+        $this->pidFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
         $this->pidFactory->shouldReceive("create")->andReturn($this->pid);
 
         $this->inputDefinition = \Mockery::mock("Symfony\\Component\\Console\\Input\\InputDefinition");
@@ -115,10 +115,10 @@ class PoolControlCommandTest extends \PHPUnit_Framework_TestCase
         // test when pool is stopped
         $noPidFile = "no.pid";
 
-        $noPid = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
-        $noPid->shouldReceive("getPid")->atLeast()->times(1)->andThrow("Silktide\\Teamster\\Exception\\PidException");
+        $noPid = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidInterface")->shouldIgnoreMissing(true);
+        $noPid->shouldReceive("getPid")->atLeast()->times(1)->andThrow("Lexide\\Teamster\\Exception\\PidException");
 
-        $noPidFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
+        $noPidFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidFactoryInterface");
         $noPidFactory->shouldReceive("create")->withArgs([$noPidFile])->once()->andReturn($noPid);
 
         $this->runner->shouldReceive("execute")->withArgs([$poolCommand, false])->once();
@@ -208,4 +208,3 @@ class PoolControlCommandTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

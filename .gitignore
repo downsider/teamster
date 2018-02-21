@@ -1,2 +1,4 @@
 /.idea
 /vendor
+/test/Pool/Runner/output/consoleOutput
+/test/Pool/Runner/output/output

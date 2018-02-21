@@ -1,11 +1,11 @@
 <?php
 
-namespace Silktide\Teamster\Pool\Runner;
+namespace Lexide\Teamster\Pool\Runner;
 
-use Silktide\Teamster\Exception\PidException;
-use Silktide\Teamster\Exception\RunnerException;
-use Silktide\Teamster\Pool\Pid\PidFactoryInterface;
-use Silktide\Teamster\Pool\Pid\PidInterface;
+use Lexide\Teamster\Exception\PidException;
+use Lexide\Teamster\Exception\RunnerException;
+use Lexide\Teamster\Pool\Pid\PidFactoryInterface;
+use Lexide\Teamster\Pool\Pid\PidInterface;
 
 /**
  * Class to set up and run a shell command

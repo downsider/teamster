@@ -1,10 +1,10 @@
 <?php
 
-namespace Silktide\Teamster\Test\Command;
+namespace Lexide\Teamster\Test\Command;
 
-use Silktide\Teamster\Command\ThreadCommand;
-use Silktide\Teamster\Pool\Runner\RunnerFactory;
-use Silktide\Teamster\Pool\Runner\RunnerInterface;
+use Lexide\Teamster\Command\ThreadCommand;
+use Lexide\Teamster\Pool\Runner\RunnerFactory;
+use Lexide\Teamster\Pool\Runner\RunnerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputDefinition;
@@ -48,10 +48,10 @@ class ThreadCommandTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->runner = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerInterface")->shouldIgnoreMissing();
+        $this->runner = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerInterface")->shouldIgnoreMissing();
 
-        $this->runnerFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Runner\\RunnerFactory")->shouldIgnoreMissing();
-        $this->runnerFactory->shouldReceive("createRunner")->andReturn($this->runner);
+        $this->runnerFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Runner\\RunnerFactory")->shouldIgnoreMissing();
+
 
         $this->inputDefinition = \Mockery::mock("Symfony\\Component\\Console\\Input\\InputDefinition");
 
@@ -62,6 +62,8 @@ class ThreadCommandTest extends \PHPUnit_Framework_TestCase
     public function testSignature()
     {
         $this->inputDefinition->shouldReceive("addArgument")->times(3);
+
+        $this->runnerFactory->shouldReceive("createRunner")->andReturn($this->runner);
 
         $commandName = "thread:command";
 
@@ -74,9 +76,9 @@ class ThreadCommandTest extends \PHPUnit_Framework_TestCase
     public function testExecuteCommand()
     {
         foreach ($this->argList as $arg => $value) {
-            $this->input->shouldReceive("getArgument")->withArgs([$arg])->once()->andReturn($value);
+            $this->input->shouldReceive("getArgument")->with($arg)->once()->andReturn($value);
         }
-        $this->runnerFactory->shouldReceive("createRunner")->withArgs([$this->argList["type"], "", $this->argList["maxRunCount"]])->once();
+        $this->runnerFactory->shouldReceive("createRunner")->withArgs([$this->argList["type"], "", $this->argList["maxRunCount"]])->once()->andReturn($this->runner);
         $this->runner->shouldReceive("execute")->withArgs([$this->argList["threadCommand"]])->once();
 
         $command = new ThreadCommand("thread:command", $this->runnerFactory);
@@ -84,4 +86,3 @@ class ThreadCommandTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

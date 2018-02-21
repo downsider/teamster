@@ -1,33 +1,28 @@
 {
-  "name": "silktide/teamster",
+  "name": "lexide/teamster",
   "description": "An implementation of the Thread Pool pattern, for running a suite of console commands continuously",
-  "license": "proprietary",
-  "homepage": "https://github.com/silktide/teamster",
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://satis.silktide.com"
-    }
-  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lexide/teamster",
   "require": {
-    "php": ">=5.3.0",
+    "php": ">=5.5.0",
     "ext-pcntl": "*",
-    "symfony/console": "~2"
+    "symfony/console": "~3"
   },
   "require-dev": {
     "phpunit/phpunit": "4.*",
     "mockery/mockery": "0.9.*",
-    "mikey179/vfsStream": "1.4.*"
+    "mikey179/vfsStream": "1.4.*",
+    "lexide/pharmacist": "1.0.0"
   },
   "autoload": {
     "psr-4": {
-      "Silktide\\Teamster\\": "src",
-      "Silktide\\Teamster\\Test\\": "test"
+      "Lexide\\Teamster\\": "src",
+      "Lexide\\Teamster\\Test\\": "test"
     }
   },
   "extra": {
-    "downsider-puzzle-di": {
-      "silktide/syringe": {
+    "lexide/puzzle-di": {
+      "lexide/syringe": {
         "path": "config/syringe.json"
       }
     }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Silktide\Teamster\Command;
+namespace Lexide\Teamster\Command;
 
-use Silktide\Teamster\Exception\NotFoundException;
-use Silktide\Teamster\Exception\PidException;
-use Silktide\Teamster\Exception\ProcessException;
-use Silktide\Teamster\Pool\Pid\Pid;
-use Silktide\Teamster\Pool\Pid\PidFactoryInterface;
-use Silktide\Teamster\Pool\Runner\RunnerFactory;
+use Lexide\Teamster\Exception\NotFoundException;
+use Lexide\Teamster\Exception\PidException;
+use Lexide\Teamster\Exception\ProcessException;
+use Lexide\Teamster\Pool\Pid\Pid;
+use Lexide\Teamster\Pool\Pid\PidFactoryInterface;
+use Lexide\Teamster\Pool\Runner\RunnerFactory;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -75,7 +75,7 @@ class PoolControlCommand extends Command
 
     public function configure()
     {
-        $this->setName("silktide:teamster:control")
+        $this->setName("lexide:teamster:control")
             ->setDescription("Control command for the teamster service")
             ->addArgument("action", InputArgument::REQUIRED, "service action");
     }
@@ -166,6 +166,7 @@ class PoolControlCommand extends Command
      *
      * @param bool $skipCache
      * @return int
+     * @throws PidException
      */
     protected function getPid($skipCache = false)
     {

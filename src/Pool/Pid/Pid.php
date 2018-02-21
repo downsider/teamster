@@ -1,8 +1,8 @@
 <?php
 
-namespace Silktide\Teamster\Pool\Pid;
+namespace Lexide\Teamster\Pool\Pid;
 
-use Silktide\Teamster\Exception\PidException;
+use Lexide\Teamster\Exception\PidException;
 
 /**
  * Pid

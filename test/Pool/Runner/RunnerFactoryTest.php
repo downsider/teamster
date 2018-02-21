@@ -1,9 +1,9 @@
 <?php
 
-namespace Silktide\Teamster\Test\Pool\Runner;
+namespace Lexide\Teamster\Test\Pool\Runner;
 
-use Silktide\Teamster\Exception\RunnerException;
-use Silktide\Teamster\Pool\Runner\RunnerFactory;
+use Lexide\Teamster\Exception\RunnerException;
+use Lexide\Teamster\Pool\Runner\RunnerFactory;
 
 /**
  *
@@ -17,7 +17,7 @@ class RunnerFactoryTest extends \PHPUnit_Framework_TestCase
 
     public function setup()
     {
-        $this->pidFactory = \Mockery::mock("Silktide\\Teamster\\Pool\\Pid\\PidFactoryInterface")->shouldIgnoreMissing();
+        $this->pidFactory = \Mockery::mock("Lexide\\Teamster\\Pool\\Pid\\PidFactoryInterface")->shouldIgnoreMissing();
         $this->consolePath = __DIR__ . "/output/console.php";
     }
 
@@ -136,7 +136,7 @@ class RunnerFactoryTest extends \PHPUnit_Framework_TestCase
 
         $runner = $factory->createRunner("process");
 
-        $this->assertInstanceOf("Silktide\\Teamster\\Pool\\Runner\\ProcessRunner", $runner);
+        $this->assertInstanceOf("Lexide\\Teamster\\Pool\\Runner\\ProcessRunner", $runner);
         $this->assertAttributeEquals($timeout, "processTimeout", $runner);
     }
 
@@ -148,7 +148,7 @@ class RunnerFactoryTest extends \PHPUnit_Framework_TestCase
 
         $runner = $factory->createRunner("console");
 
-        $this->assertInstanceOf("Silktide\\Teamster\\Pool\\Runner\\ConsoleRunner", $runner);
+        $this->assertInstanceOf("Lexide\\Teamster\\Pool\\Runner\\ConsoleRunner", $runner);
         $this->assertAttributeEquals($timeout, "processTimeout", $runner);
         $this->assertAttributeEquals($this->consolePath, "consolePath", $runner);
     }
@@ -166,4 +166,3 @@ class RunnerFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

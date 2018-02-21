@@ -1,8 +1,8 @@
 <?php
 
-namespace Silktide\Teamster\Pool\Runner;
+namespace Lexide\Teamster\Pool\Runner;
 
-use Silktide\Teamster\Pool\Pid\PidInterface;
+use Lexide\Teamster\Pool\Pid\PidInterface;
 
 /**
  * Common interface for runners
